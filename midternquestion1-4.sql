@@ -1,3 +1,5 @@
+use BasketballTournament;
+
 #Provide locations
 select distinct TournamentLocation as Locations
 from Tournaments;
@@ -26,8 +28,8 @@ order by Points_scored desc
 limit 10) as S;
 
 #display players' names along with their highest score
-select Player, Points_scored
-from(select PlayerID, concat(PlayerFirstName," ", PlayerLastName) as Player, sum(PlayerScore) as Points_scored
+select Player, Max_points
+from(select PlayerID, concat(PlayerFirstName, " ", PlayerLastName) as Player, max(PlayerScore) as Max_Points
 from Players natural join Scores
 group by PlayerID
 order by PlayerLastName, PlayerFirstName) as S;
