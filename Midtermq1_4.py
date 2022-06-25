@@ -251,8 +251,7 @@ SERVER   = "localhost"        # db server to connect to
 USERNAME = "root"                            # user to connect as
 PASSWORD = "No$Veremos3n3l3xilio"                            # user's password
 DATABASE = "BasketballTournament"                              # db to user
-QUERY    = "select Player, Points_scored from(select PlayerID, concat(PlayerFirstName,\" \", PlayerLastName) as Player, sum(Playerscore) as Points_scored from Players natural join Scores group by PlayerID order by PlayerLastName, PlayerFirstName) as S;"       # query statement
-
+QUERY    = "select Player, Max_points from(select PlayerID, concat(PlayerFirstName, \" \", PlayerLastName) as Player, max(PlayerScore) as Max_Points from Players natural join Scores group by PlayerID order by PlayerLastName, PlayerFirstName) as S;"
 if __name__ == "__main__":
    try:
       # initialize db connection
